@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sam Varley</title>
+    <link type="text/css" rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/w95.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            background-color: #008080; /* Windows 95 teal — matches bg-secondary */
+        }
+        main {
+            min-height: calc(100vh - 80px); /* fill remaining height between header and footer */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-global">
+
+        <br>
+    </header>
+
+    <main>
+        <section class="section section-lg overflow-hidden z-2">
+            <div class="container z-2">
+                <div class="row justify-content-center pt-6 pt-md-5 pb-0 mb-2">
+                    <div class="col-12 col-xl-8">
+                        <div class="card card-tertiary">
+                            <div class="card-header text-center">
+                                <span>Home</span>
+                            </div>
+                            <div class="card-body text-center">
+                                <h2 class="mb-3">Sam Varley</h2>
+                                <p class="card-text">Welcome! </p>
+                                <div class="d-flex justify-content-center flex-wrap mt-3">
+                                    <a href="about.html" class="btn btn-sm mr-2 mb-2 btn-primary border-dark"><span class="btn-text">👤 About Me</span></a>
+                                    <a href="achievements.html" class="btn btn-sm mr-2 mb-2 btn-primary border-dark"><span class="btn-text">🏆 Achievements</span></a>
+                                    <a href="contact.html" class="btn btn-sm mb-2 btn-primary border-dark"><span class="btn-text">✉️ Contact</span></a>
+                                    <a href="index.html" class="btn btn-sm mb-2 btn-primary border-dark"><span class="btn-text">🏠 Home</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p style="color: #ffffff;">
+        Website theme from <a href="https://github.com/themesberg/windows-95-ui-kit">Github</a>
+    </p>
+    </footer>
+
+
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/w95.js"></script>
+    <script>
+        function updateClock() {
+            const now = new Date(); let h = now.getHours(), m = now.getMinutes();
+            const ampm = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
+            const t = h + ':' + String(m).padStart(2,'0') + ' ' + ampm;
+            document.getElementById('clock').textContent = t;
+            document.getElementById('clock-footer').textContent = t;
+        }
+        updateClock(); setInterval(updateClock, 10000);
+    </script>
+</body>
+</html>
