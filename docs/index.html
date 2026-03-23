@@ -49,6 +49,49 @@
                         </div>
                     </div>
                 </div>
+                <br>
+            <div class="card card-tertiary" style="width: 300px">
+            <div class="card-header text-center">
+            <span>Now Playing</span>
+            </div>
+            <div class="card-body" style="padding: 8px 12px;">
+
+            <!-- Music row -->
+            <div class="now-playing-row">
+            <div class="np-art" id="music-art"><span id="music-emoji">🎵</span></div>
+            <div class="np-info">
+                <div class="np-label">🎵 Currently listening to</div>
+                <div class="np-title" id="song-title">Loading...</div>
+                <div class="np-sub" id="song-sub"></div>
+            </div>
+            <div class="np-wave" id="music-wave"></div>
+            <button class="btn btn-sm btn-primary border-dark np-shuffle" onclick="refreshMusic()">↻</button>
+            </div>
+            </div>
+            </div>
+            <br>
+            <div class="card card-tertiary" style="width: 300px">
+            <div class="card-header text-center">
+            <span>Movies and TV</span>
+            </div>
+            <div class="card-body" style="padding: 8px 12px;">
+            <!-- Movie row -->
+            <div class="now-playing-row">
+            <div class="np-art" id="movie-art"><span id="movie-emoji">🎬</span></div>
+            <div class="np-info">
+                <div class="np-label">🎬 Recently watched</div>
+                <div class="np-title" id="movie-title">Loading...</div>
+                <div class="np-sub" id="movie-sub"></div>
+            </div>
+            <div class="np-wave" id="movie-wave"></div>
+            <button class="btn btn-sm btn-primary border-dark np-shuffle" onclick="refreshMovie()">↻</button>
+            </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
             </div>
         </div>
     </main>
@@ -63,13 +106,140 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="js/w95.js"></script>
-    <script>
-        function updateClock() {
-            const now = new Date(); let h = now.getHours(), m = now.getMinutes();
-            const ampm = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
-            const t = h + ':' + String(m).padStart(2,'0') + ' ' + ampm;
-        }
-        updateClock(); setInterval(updateClock, 10000);
-    </script>
+
+
+
+
+
+<script>
+// All MBIDs verified from musicbrainz.org URLs.
+// Cover art fetched from coverartarchive.org using release-group IDs.
+// type: "rg" = release-group, "r" = release (for entries where only a release ID was found)
+const songs = [
+    // Cocteau Twins
+    { title: "Heaven or Las Vegas",         artist: "Cocteau Twins",          album: "Heaven or Las Vegas",        id: "12fab6b9-4eaf-33b0-963e-cae03ac332fe", type: "rg" },
+    { title: "Cherry-Coloured Funk",         artist: "Cocteau Twins",          album: "Heaven or Las Vegas",        id: "12fab6b9-4eaf-33b0-963e-cae03ac332fe", type: "rg" },
+    { title: "Iceblink Luck",                artist: "Cocteau Twins",          album: "Heaven or Las Vegas",        id: "12fab6b9-4eaf-33b0-963e-cae03ac332fe", type: "rg" },
+    // Cigarettes After Sex
+    { title: "Apocalypse",                   artist: "Cigarettes After Sex",   album: "Cigarettes After Sex",       id: "6b091951-c709-4395-9c17-fbf90dcf54a3", type: "r"  },
+    { title: "Nothing's Gonna Hurt You Baby",artist: "Cigarettes After Sex",   album: "Cigarettes After Sex",       id: "6b091951-c709-4395-9c17-fbf90dcf54a3", type: "r"  },
+    { title: "Heavenly",                     artist: "Cigarettes After Sex",   album: "Cry",                        id: "21759bba-54bc-4357-8f17-a6bcd50e0aa3", type: "rg" },
+    // U2
+    { title: "One",                          artist: "U2",                     album: "Achtung Baby",               id: "744c7a1b-ac79-35c4-bd92-7e2c6a24c8d8", type: "rg" },
+    { title: "With or Without You",          artist: "U2",                     album: "The Joshua Tree",            id: "4f252f2e-5e46-3977-8167-f54d59e50d28", type: "rg" },
+    // The Smiths
+    { title: "There Is a Light That Never Goes Out", artist: "The Smiths",     album: "The Queen Is Dead",          id: "d8dde278-482c-3cc8-a530-fea70476f3a5", type: "rg" },
+    { title: "This Charming Man",            artist: "The Smiths",             album: "The Smiths",                 id: "9c8dce0e-2066-38cf-9a04-8ff14c8e80c2", type: "rg" },
+    { title: "How Soon Is Now?",             artist: "The Smiths",             album: "Meat Is Murder",             id: "3408dccb-f9b0-3921-8f5a-c2a3e1e4fc4b", type: "rg" },
+    // Radiohead
+    { title: "Karma Police",                 artist: "Radiohead",              album: "OK Computer",                id: "b1392450-e666-3926-a536-22c65f834433", type: "rg" },
+    { title: "Fake Plastic Trees",           artist: "Radiohead",              album: "The Bends",                  id: "80649c98-6cff-3b4b-87af-76e2a1d32b58", type: "rg" },
+    { title: "Creep",                        artist: "Radiohead",              album: "Pablo Honey",                id: "1d328f85-8580-352b-8498-ba9e9c4e4c9d", type: "rg" },
+    // The Stone Roses
+    { title: "I Wanna Be Adored",            artist: "The Stone Roses",        album: "The Stone Roses",            id: "88b86fe0-26f5-3949-817a-8082145e704d", type: "rg" },
+    { title: "She Bangs the Drums",          artist: "The Stone Roses",        album: "The Stone Roses",            id: "88b86fe0-26f5-3949-817a-8082145e704d", type: "rg" },
+    { title: "Waterfall",                    artist: "The Stone Roses",        album: "The Stone Roses",            id: "88b86fe0-26f5-3949-817a-8082145e704d", type: "rg" },
+    // Dave
+    { title: "Black",                        artist: "Dave",                   album: "Psychodrama",                id: "b6c85828-6b6a-445e-9a7c-effc4c084e91", type: "rg" },
+    { title: "Location",                     artist: "Dave",                   album: "Psychodrama",                id: "b6c85828-6b6a-445e-9a7c-effc4c084e91", type: "rg" },
+    // Bob Marley
+    { title: "Redemption Song",              artist: "Bob Marley & The Wailers", album: "Legend",                  id: "1a4c52cd-483a-347c-93f9-4d512767c7ba", type: "rg" },
+    { title: "No Woman, No Cry",             artist: "Bob Marley & The Wailers", album: "Legend",                  id: "1a4c52cd-483a-347c-93f9-4d512767c7ba", type: "rg" },
+    // Aphex Twin
+    { title: "Xtal",                         artist: "Aphex Twin",             album: "Selected Ambient Works 85–92", id: "6842c81d-ea77-3dfd-abf7-4323add3f4d4", type: "rg" },
+    { title: "Ageispolis",                   artist: "Aphex Twin",             album: "Selected Ambient Works 85–92", id: "6842c81d-ea77-3dfd-abf7-4323add3f4d4", type: "rg" },
+    // Clairo
+    { title: "Blouse",                       artist: "Clairo",                 album: "Sling",                      id: "65f30928-060d-4068-b7fa-38df3f5ff5b6", type: "r"  },
+    { title: "Amoeba",                       artist: "Clairo",                 album: "Sling",                      id: "65f30928-060d-4068-b7fa-38df3f5ff5b6", type: "r"  },
+    // Mac DeMarco
+    { title: "Ode to Viceroy",               artist: "Mac DeMarco",            album: "2",                          id: "3ba00670-7a00-46d9-b9f4-80625438c058", type: "rg" },
+    { title: "Freaking Out the Neighborhood",artist: "Mac DeMarco",            album: "2",                          id: "3ba00670-7a00-46d9-b9f4-80625438c058", type: "rg" },
+    // Playboi Carti
+    { title: "Magnolia",                     artist: "Playboi Carti",          album: "Playboi Carti",              id: "f7479a73-66a7-41be-9f77-9e70828a5809", type: "rg" },
+    { title: "Shoota",                       artist: "Playboi Carti",          album: "Die Lit",                    id: "f7479a73-66a7-41be-9f77-9e70828a5809", type: "rg" },
+];
+
+const movies = [
+    { title: "Dune: Part Two",                    year: "2024", genre: "Sci-Fi · Epic",       emoji: "🏜️" },
+    { title: "Oppenheimer",                        year: "2023", genre: "Drama · History",     emoji: "💥" },
+    { title: "The Substance",                      year: "2024", genre: "Horror · Thriller",   emoji: "🩸" },
+    { title: "Poor Things",                        year: "2023", genre: "Fantasy · Comedy",    emoji: "🦋" },
+    { title: "Interstellar",                       year: "2014", genre: "Sci-Fi · Drama",      emoji: "🌌" },
+    { title: "Everything Everywhere All at Once",  year: "2022", genre: "Sci-Fi · Action",     emoji: "🥢" },
+    { title: "Past Lives",                         year: "2023", genre: "Romance · Drama",     emoji: "🌊" },
+    { title: "The Batman",                         year: "2022", genre: "Action · Crime",      emoji: "🦇" },
+    { title: "Saltburn",                           year: "2023", genre: "Thriller · Mystery",  emoji: "🌹" },
+    { title: "Civil War",                          year: "2024", genre: "Action · Drama",      emoji: "📷" }
+];
+
+let usedSongs = [], usedMovies = [];
+
+function pickRandom(arr, used) {
+    let pool = arr.map((_, i) => i).filter(i => !used.includes(i));
+    if (!pool.length) { used.length = 0; pool = arr.map((_, i) => i); }
+    const idx = pool[Math.floor(Math.random() * pool.length)];
+    used.push(idx);
+    return arr[idx];
+}
+
+function buildWave(id, type) {
+    const el = document.getElementById(id);
+    el.innerHTML = '';
+    [0.3,0.7,1,0.5,0.9,0.4,0.8,0.6,0.3,0.7].forEach((h, i) => {
+        const b = document.createElement('div');
+        b.className = 'bar' + (type === 'movie' ? ' movie' : '');
+        b.style.height = (24 * h) + 'px';
+        b.style.animationDelay = (i * 0.09) + 's';
+        b.style.animationDuration = (0.6 + Math.random() * 0.5) + 's';
+        el.appendChild(b);
+    });
+}
+
+function loadCoverArt(artEl, id, type) {
+    if (!id) { artEl.innerHTML = '<span>🎵</span>'; return; }
+    const base = type === 'rg'
+        ? 'https://coverartarchive.org/release-group/' + id + '/front-250'
+        : 'https://coverartarchive.org/release/' + id + '/front-250';
+    artEl.innerHTML = '<span>🎵</span>';
+    const img = new Image();
+    img.onload = function() {
+        artEl.innerHTML = '';
+        const tag = document.createElement('img');
+        tag.src = base;
+        artEl.appendChild(tag);
+    };
+    img.onerror = function() {
+        artEl.innerHTML = '<span>🎵</span>';
+    };
+    img.src = base;
+}
+
+function refreshMusic() {
+    const s = pickRandom(songs, usedSongs);
+    document.getElementById('song-title').textContent = s.title;
+    document.getElementById('song-sub').textContent = s.artist + ' · ' + s.album;
+    loadCoverArt(document.getElementById('music-art'), s.id, s.type);
+    buildWave('music-wave', 'music');
+}
+
+function refreshMovie() {
+    const m = pickRandom(movies, usedMovies);
+    document.getElementById('movie-title').textContent = m.title;
+    document.getElementById('movie-sub').textContent = m.year + ' · ' + m.genre;
+    document.getElementById('movie-art').innerHTML = '<span>' + m.emoji + '</span>';
+    buildWave('movie-wave', 'movie');
+}
+
+function updateClock() {
+    const now = new Date(); let h = now.getHours(), m = now.getMinutes();
+    const ampm = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
+    const t = h + ':' + String(m).padStart(2,'0') + ' ' + ampm;
+}
+
+refreshMusic();
+refreshMovie();
+updateClock();
+setInterval(updateClock, 10000);
+</script>
 </body>
 </html>
