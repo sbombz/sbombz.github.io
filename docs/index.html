@@ -160,16 +160,40 @@ const songs = [
 ];
 
 const movies = [
-    { title: "Dune: Part Two",                    year: "2024", genre: "Sci-Fi · Epic",       emoji: "🏜️" },
-    { title: "Oppenheimer",                        year: "2023", genre: "Drama · History",     emoji: "💥" },
-    { title: "The Substance",                      year: "2024", genre: "Horror · Thriller",   emoji: "🩸" },
-    { title: "Poor Things",                        year: "2023", genre: "Fantasy · Comedy",    emoji: "🦋" },
-    { title: "Interstellar",                       year: "2014", genre: "Sci-Fi · Drama",      emoji: "🌌" },
-    { title: "Everything Everywhere All at Once",  year: "2022", genre: "Sci-Fi · Action",     emoji: "🥢" },
-    { title: "Past Lives",                         year: "2023", genre: "Romance · Drama",     emoji: "🌊" },
-    { title: "The Batman",                         year: "2022", genre: "Action · Crime",      emoji: "🦇" },
-    { title: "Saltburn",                           year: "2023", genre: "Thriller · Mystery",  emoji: "🌹" },
-    { title: "Civil War",                          year: "2024", genre: "Action · Drama",      emoji: "📷" }
+    { title: "The Hunt",                          year: "2012", genre: "Drama",                     emoji: "🎯", id: "49530" },
+    { title: "Manchester by the Sea",             year: "2016", genre: "Drama",                     emoji: "🌊", id: "334543" },
+    { title: "Mulholland Drive",                  year: "2001", genre: "Mystery · Thriller",        emoji: "🛣️", id: "1018" },
+    { title: "Eraserhead",                        year: "1977", genre: "Horror · Experimental",     emoji: "👶", id: "985" },
+    { title: "Memento",                           year: "2000", genre: "Thriller · Mystery",        emoji: "🧠", id: "77" },
+    { title: "Parasite",                          year: "2019", genre: "Thriller · Drama",          emoji: "🏠", id: "496243" },
+    { title: "Fight Club",                        year: "1999", genre: "Drama",                     emoji: "👊", id: "550" },
+    { title: "The Grand Budapest Hotel",          year: "2014", genre: "Comedy · Drama",            emoji: "🏨", id: "120467" },
+    { title: "Oppenheimer",                       year: "2023", genre: "Drama · History",           emoji: "💥", id: "872585" },
+    { title: "Everything Everywhere All at Once", year: "2022", genre: "Sci-Fi · Action",           emoji: "🥢", id: "545611" },
+    { title: "La Haine",                          year: "1995", genre: "Drama",                     emoji: "🔥", id: "406" },
+    { title: "Paul Blart: Mall Cop",              year: "2009", genre: "Comedy",                    emoji: "🛒", id: "1452" },
+    { title: "1917",                              year: "2019", genre: "War · Drama",               emoji: "🎖️", id: "530915" },
+    { title: "The Holdovers",                     year: "2023", genre: "Comedy · Drama",            emoji: "🎄", id: "840430" },
+    { title: "The Banshees of Inisherin",         year: "2022", genre: "Drama · Comedy",            emoji: "🪕", id: "674324" },
+    { title: "Bullet Train",                      year: "2022", genre: "Action · Comedy",           emoji: "🚄", id: "718930" },
+    { title: "Knives Out",                        year: "2019", genre: "Mystery · Comedy",          emoji: "🔪", id: "546554" },
+    { title: "Joker",                             year: "2019", genre: "Drama · Crime",             emoji: "🤡", id: "475557" },
+    { title: "Paddington",                        year: "2014", genre: "Family · Comedy",           emoji: "🐻", id: "116149" },
+    { title: "Ex Machina",                        year: "2014", genre: "Sci-Fi · Thriller",         emoji: "🤖", id: "264660" },
+    { title: "Gone Girl",                         year: "2014", genre: "Thriller · Mystery",        emoji: "📰", id: "210577" },
+    { title: "Whiplash",                          year: "2014", genre: "Drama · Music",             emoji: "🥁", id: "244786" },
+    { title: "Captain Phillips",                  year: "2013", genre: "Drama · Thriller",          emoji: "🚢", id: "109424" },
+    { title: "The Wolf of Wall Street",           year: "2013", genre: "Drama · Biography",         emoji: "🐺", id: "106646" },
+
+    { title: "John Wick",                         year: "2014", genre: "Action · Thriller",         emoji: "🔫", id: "245891" },
+    { title: "John Wick: Chapter 2",              year: "2017", genre: "Action · Thriller",         emoji: "🔫", id: "324552" },
+    { title: "John Wick: Chapter 3 – Parabellum", year: "2019", genre: "Action · Thriller",         emoji: "🔫", id: "458156" },
+    { title: "John Wick: Chapter 4",              year: "2023", genre: "Action · Thriller",         emoji: "🔫", id: "603692" },
+
+    { title: "The Perks of Being a Wallflower",   year: "2012", genre: "Drama · Romance",           emoji: "📚", id: "84892" },
+    { title: "Beautiful Boy",                     year: "2018", genre: "Drama",                     emoji: "💔", id: "451915" },
+    { title: "Dune",                              year: "2021", genre: "Sci-Fi · Epic",             emoji: "🏜️", id: "438631" },
+    { title: "Dune: Part Two",                    year: "2024", genre: "Sci-Fi · Epic",             emoji: "🏜️", id: "693134" }
 ];
 
 let usedSongs = [], usedMovies = [];
