@@ -7784,13 +7784,13 @@ a:hover,
 
     .np-wave .bar {
       width: 3px;
-      background: #000080;
+      background: #000;
       border-radius: 0;
       animation: w95wave 0.8s ease-in-out infinite;
     }
 
     .np-wave .bar.movie {
-      background: #800000;
+      background: #000;
     }
 
     @keyframes w95wave {
