@@ -11,10 +11,6 @@ html {
   -ms-user-select: none;
   user-select: none;
 }
-body,
-icon {
-  font-family: Helvetica, Arial, Sans-Serif;
-}
 body ::-webkit-scrollbar {
   width: 16px;
   height: 16px;
@@ -120,6 +116,11 @@ fos-menu {
 fos-menu-item > img {
   vertical-align: middle;
   margin-right: 10px;
+  font-family: 'Windows 95';
+  src: url('../fonts/w-95-sans-serif.woff2') format('woff2'),
+  url('../fonts/w-95-sans-serif.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 fos-menu::part(title) {
   text-align: right;
@@ -148,17 +149,7 @@ fos-menu::part(window) {
   max-width: 100%;
   max-height: 100%;
 }
-.invaderz {
-  left: 0;
-  top: 0;
-  width: 400px;
-  height: 520px;
-  max-width: 100%;
-  max-height: 100%;
-}
-#gamesIcons > fos-icon > img {
-  width: 80%;
-}
+
 #clock {
   position: absolute;
   right: 10px;
@@ -198,9 +189,45 @@ body::after {
     z-index: 9999;
     background: repeating-linear-gradient(
         90deg,
-        rgba(0, 0, 0, 0.08) 0px,
-        rgba(0, 0, 0, 0.08) 2px,
+        rgba(25, 0, 255, 0.15) 2px,
+        rgba(47, 255, 0, 0.15) 4px,
+        rgba(255, 0, 0, 0.15)6px,
         transparent 0px,
         transparent 3px
     );
+}
+
+#clippy-bubble {
+    position: fixed;
+    background: #FFFFE1;
+    border: 2px solid black;
+    padding: 8px 12px;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    font-size: 13px;
+    max-width: 200px;
+    z-index: 998;
+    box-shadow: 2px 2px 0px black;
+}
+
+.clippy-arrow {
+    position: absolute;
+    bottom: -12px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid black;
+}
+
+.clippy-arrow::after {
+    content: '';
+    position: absolute;
+    top: -13px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 11px solid #FFFFE1;
 }

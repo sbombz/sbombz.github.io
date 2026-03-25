@@ -7,46 +7,53 @@
     <link rel="preload" as="image" href="bg.png">
     <link type="text/css" rel="stylesheet" href="css/style.css">
     <link type="text/css" rel="stylesheet" href="css/w95.css">
+    <title>
+        sam varley
+    </title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
     </head>
 
 <body>
 
 <fos-desktop id="mainDesktop">
+
 		<fos-bar>
+
 			<fos-menu name="Start">
+
 				<div style="min-width: 100px">Menu</div>
-				<hr>
+				<hr><p>
                 <fos-menu-item href="bin"><img src="images/bin.ico">Bin</fos-menu-item>
 				<fos-menu-item href="aboutme"><img src="images/about.ico">About</fos-menu-item>
 				<fos-menu-item href="achievements"><img src="images/projectlog.ico">Project Log</fos-menu-item>
 				<fos-menu-item href="contact"><img src="images/contact.ico">Contact</fos-menu-item>
                 <fos-menu-item href="travels"><img src="images/travels.ico">Travels</fos-menu-item>
                 <fos-menu-item href="music"><img src="images/music.ico">Music</fos-menu-item>
-				
+                </p>
 			</fos-menu>
-			<div id="clock"></div>
+			<div id="clock" onclick="updateClock">12:00</div>
 		</fos-bar>
-        
-        <fos-icon href="bin" name="Bin">
+        <fos-icon href="bin" name="Bin" style="width: 60px;">
 		<img src="images/bin.ico"  alt="Bin" title="Bin">
 		</fos-icon>
 		<fos-icon href="aboutme" name="About">
-		<img src="images/about.ico"  alt="About Me" title="About Me">
+		<img src="images/about.ico"  alt="About Me" title="About Me"style="width: 60px;">
 		</fos-icon>
 		<fos-icon href="achievements" name="Output">
-		<img src="images/projectlog.ico" alt="Achievements" title="Achievements">
+		<img src="images/projectlog.ico" alt="Achievements" title="Achievements"style="width: 60px;">
 		</fos-icon>
 		<fos-icon href="contact" name="Contact">
-		<img src="images/contact.ico" alt="Radio" title="Radio">
+		<img src="images/contact.ico" alt="Radio" title="Radio"style="width: 60px;">
 		</fos-icon>
 		<fos-icon href="travels" name="Travels">
-		<img src="images/travels.ico" alt="Travels" title="Travels">
+		<img src="images/travels.ico" alt="Travels" title="Travels"style="width: 60px;">
 		</fos-icon>
         <fos-icon href="music" name="Music">
-            <img src="images/music.ico" alt="Music" title="Music">
+            <img src="images/music.ico" alt="Music" title="Music"style="width: 60px;">
         </fos-icon>
-
-
+        <fos-icon href="clippy" alt="Clippy" style="left: 90%; top: 60%; width: 80px">
+        <img src="images/clippy.png">
+        </fos-icon>
 
 
 
@@ -67,9 +74,8 @@
                 Cooking<br>
                 Movies           <a href="https://boxd.it/6tkGT">Letterboxd (updated once a year maybe)</a><br>
                 Tech<br>
-                Travelling<br>
-                -------------
-                <h3 >Coding</h3><br>
+                Travelling
+                <h4 >Coding</h4>
                 <p>
                 Languages, In descending order of proficiency:<br>
 
@@ -79,18 +85,17 @@
                 Lua (minor experience from ricing on Linux)<br>
                 JavaScript (basic basic stuff)<br>
 
-                Working on Learning:<br>
+                Working on Learning:<br><br>
 
                 Git <br>
                 React<br>
                 C++<br>
                     <br><br>
-                Currently I use VsCode but I want to switch to Neovim cos it looks cool
                 </p>
                 </div>
                 </fos-window>
-                <fos-window name="achievements" title="Achievements" style="max-width: 1100px;">
-                     <div class="row mt-5 text-center mb-3">
+                <fos-window name="achievements" title="Achievements" style="width: 1100px;">
+                    <div class="row mt-5 text-center mb-3">
                     <h3>Project Diary</h3>
                     <p>click fullscreen to allow scrolling</p>
                     </h1></div>
@@ -251,7 +256,7 @@
         
         <fos-window name="music" title="-">
             <br>
-            <div class="card-card" style="width: 300px">
+            <div class="card-card" style="width: 300px max-content">
             <div class="card-header text-center" style="color: floralwhite">
             <span>Music</span>
             </div>
@@ -268,13 +273,13 @@
             </div>
             </div>
             </div>
+        </div>
             <br>
-            <div class="card card" style="width: 300px">
+            <div class="card" style="width: 300px max-content">
             <div class="card-header text-center" style="color: floralwhite">
             <span>Movies and TV</span>
             </div>
             <div class="card-body" style="padding: 8px 12px;">
-            <!-- Movie row -->
             <div class="now-playing-row">
             <div class="np-art" id="movie-art"><span id="movie-emoji">🎬</span></div>
             <div class="np-info">
@@ -282,7 +287,6 @@
                 <div class="np-title" id="movie-title">Loading...</div>
                 <div class="np-sub" id="movie-sub"></div>
             </div>
-            <div class="np-wave" id="movie-wave"></div>
             <button class="btn btn-sm btn-primary border-dark np-shuffle" onclick="refreshMovie()">↻</button>
             </div>
 
@@ -293,13 +297,14 @@
 </div>
         </fos-window>
 	</fos-desktop>
-
+<div id="clippy-bubble" style="display:none;">
+    <p id="clippy-text">Welcome! Double click an icon to open it or use the start menu at the bottom!</p>
+    <div class="clippy-arrow"></div>
+</div>
 
 
 <script>
-// All MBIDs verified from musicbrainz.org URLs.
-// Cover art fetched from coverartarchive.org using release-group IDs.
-// type: "rg" = release-group, "r" = release (for entries where only a release ID was found)
+
 const songs = [
     // Cocteau Twins
     { title: "Heaven or Las Vegas",         artist: "Cocteau Twins",          album: "Heaven or Las Vegas",        id: "12fab6b9-4eaf-33b0-963e-cae03ac332fe", type: "rg" },
@@ -422,18 +427,96 @@ function refreshMovie() {
     buildWave('movie-wave', 'movie');
 }
 
-function updateClock() {
-    const now = new Date(); let h = now.getHours(), m = now.getMinutes();
-    const ampm = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
-    const t = h + ':' + String(m).padStart(2,'0') + ' ' + ampm;
-}
-
 refreshMusic();
 refreshMovie();
-updateClock();
 setInterval(updateClock, 10000);
+
+
+
+
+</script>
 </script>
 </body>
+<script>
+
+window.addEventListener('load', () => {
+    const clippy = document.querySelector('fos-icon[href="clippy"]');
+    const bubble = document.getElementById('clippy-bubble');
+    clippy.style.visibility = 'hidden';
+
+    setTimeout(() => {
+        clippy.style.visibility = 'visible';
+        const sound = new Audio('sounds/ding.mp3');
+        sound.play();
+
+        const rect = clippy.getBoundingClientRect();
+        bubble.style.left = (rect.left - 170) + 'px';
+        bubble.style.top = (rect.top - 110) + 'px';
+        bubble.style.display = 'block';
+    }, 3000);
+    document.addEventListener('mousemove', () => {
+    if (bubble.style.display === 'none') return;
+    const rect = clippy.getBoundingClientRect();
+    bubble.style.left = (rect.left - 170) + 'px';
+    bubble.style.top = (rect.top - 110) + 'px';
+});
+});
+</script>
+<script>
+    const desktop = document.querySelector('fos-desktop#mainDesktop');
+    const bin = document.querySelector('fos-icon[href="bin"]');
+    const binImg = bin.querySelector('img');
+    let binHasItems = false;
+    let lastDragged = null;
+
+    // save it on mousedown instead
+    desktop.addEventListener('mousedown', (e) => {
+        const path = e.composedPath();
+        for (let el of path) {
+            if (el.localName === 'fos-icon') {
+                lastDragged = el;
+                break;
+            }
+        }
+    });
+
+    desktop.addEventListener('mouseup', () => {
+        if (!lastDragged || lastDragged === bin) {
+            lastDragged = null;
+            return;
+        }
+
+        const binRect = bin.getBoundingClientRect();
+        const dragRect = lastDragged.getBoundingClientRect();
+
+        const overlap = !(
+            dragRect.right < binRect.left ||
+            dragRect.left > binRect.right ||
+            dragRect.bottom < binRect.top ||
+            dragRect.top > binRect.bottom
+        );
+
+        if (overlap) {
+            lastDragged.remove();
+            binHasItems = true;
+            binImg.src = 'images/bin_full.ico';
+            const sound = new Audio('sounds/emptybin.mp3');
+            sound.play();
+        }
+
+        lastDragged = null;
+    });
+
+    bin.addEventListener('dblclick', (e) => {
+        e.stopPropagation();
+        if (!binHasItems) return;
+            const sound = new Audio('sounds/emptybin.mp3');
+            sound.play();
+            binHasItems = false;
+            binImg.src = 'images/bin.ico';       
+    }, true);
+</script>
+</html>
 </main>
 
 
