@@ -31,7 +31,7 @@
                 <fos-menu-item href="music"><img src="images/music.ico">Music</fos-menu-item>
                 </p>
 			</fos-menu>
-			<div id="clock" onclick="updateClock">12:00</div>
+			<div id="clock"></div>
 		</fos-bar>
         <fos-icon href="bin" name="Bin" style="width: 60px;">
 		<img src="images/bin.ico"  alt="Bin" title="Bin">
@@ -516,6 +516,16 @@ window.addEventListener('load', () => {
             binImg.src = 'images/bin.ico';       
     }, true);
 </script>
+    <script>
+        function updateClock() {
+            const now = new Date(); let h = now.getHours(), m = now.getMinutes();
+            const ampm = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
+            const t = h + ':' + String(m).padStart(2,'0');
+            document.getElementById('clock').textContent = t;
+            document.getElementById('clock-footer').textContent = t;
+        }
+        updateClock(); setInterval(updateClock, 10000);
+    </script>
 </html>
 </main>
 
