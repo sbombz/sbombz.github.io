@@ -451,14 +451,14 @@ window.addEventListener('load', () => {
 
         const rect = clippy.getBoundingClientRect();
         bubble.style.left = (rect.left - 170) + 'px';
-        bubble.style.top = (rect.top - 110) + 'px';
+        bubble.style.top = (rect.top - 150) + 'px';
         bubble.style.display = 'block';
     }, 3000);
     document.addEventListener('mousemove', () => {
     if (bubble.style.display === 'none') return;
     const rect = clippy.getBoundingClientRect();
     bubble.style.left = (rect.left - 170) + 'px';
-    bubble.style.top = (rect.top - 110) + 'px';
+    bubble.style.top = (rect.top - 150) + 'px';
 });
 });
 </script>

@@ -177,7 +177,7 @@ fos-menu::part(window) {
   z-index: 9999;
   pointer-events: none;
 }
-/* crt filter from victorribieiro.com website*/
+/* crt filter modified from victorribieiro.com website*/
 body::after {
     content: '';
     position: fixed;
