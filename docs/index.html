@@ -79,7 +79,14 @@
                         <div class="card h-100">
                             <div class="card-header">🥇 Computer Science Project </div>
                             <div class="card-body ">
-                                <p class="card-text">Finished my Comp Sci Project on monitoring a forest for potential wildfire risk, the project files will be available here in the coming weeks once the submission portal closes</p>
+                                <p class="card-text">Finished my Comp Sci Project on monitoring a forest for potential wildfire risk, the project files are available here. This project achieved 90% so feel free to plagiarize</p>
+                                <a href="report/index.html" class="w95-run" id="runReport">
+                                <span class="w95-run-top">
+                                    <span class="w95-run-icon">💾</span>
+                                    <span id="runLabel">Run report.exe</span>
+                                </span>
+                                <span class="w95-run-bar" id="runBar"><span id="runFill"></span></span>
+                                </a>
                                 <div class="container z-2">
                                 <div class="row justify-content-center pt-6 pt-md-5 pb-0 mb-2">
                                 <div class="col-12 col-xl-8">
@@ -501,6 +508,29 @@ const time = () => {
 
 time();
 
+</script>
+<script>
+document.getElementById('runReport').addEventListener('click', function (e) {
+    e.preventDefault();
+    const btn = this;
+    if (btn.classList.contains('loading')) return;
+
+    btn.classList.add('loading');
+    const label = document.getElementById('runLabel');
+    const fill = document.getElementById('runFill');
+    const messages = ['Loading report...', 'Reading wildfire data...', 'Almost there...'];
+
+    let pct = 0;
+    const timer = setInterval(() => {
+        pct += 4;
+        fill.style.width = pct + '%';
+        label.textContent = messages[Math.min(Math.floor(pct / 34), 2)];
+        if (pct >= 100) {
+            clearInterval(timer);
+            window.location.href = btn.href;
+        }
+    }, 60);
+});
 </script>
 </html>
 </main>

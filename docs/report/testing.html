@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Testing & Input Validation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-card w3-large">
+    <a href="index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="investigation.html" class="w3-bar-item w3-button">Investigation</a>
+    <a href="plan-and-design.html" class="w3-bar-item w3-button">Plan & Design</a>
+    <a href="create.html" class="w3-bar-item w3-button">Create</a>
+    <a href="testing.html" class="w3-bar-item w3-button w3-white">Testing</a>
+    <a href="evaluation.html" class="w3-bar-item w3-button">Evaluation</a>
+    <a href="wordcount.html" class="w3-bar-item w3-button">Word Count</a>
+    <a href="references.html" class="w3-bar-item w3-button">References</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-center" style="padding:128px 16px">
+  <h1 class="w3-jumbo">Testing & Input Validation</h1>
+</header>
+
+<!-- Main content -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div style="width:100%;">
+    <section class="code_layout">
+      <div class="text-side">
+
+        <p>Across my project I made sure each part of my development was thoroughly tested, making sure that each section functioned properly. Below are the test cases and results.</p>
+
+        <!-- Early Development Table -->
+        <h2>TESTING</h2>
+        <h3>Early Development</h3>
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse: collapse; margin-bottom: 40px;">
+            <tr style="background-color:#07961a; color:white;">
+              <th>Test Case</th>
+              <th>Expected Result</th>
+              <th>Actual Result</th>
+              <th>Pass/Fail</th>
+            </tr>
+            <tr style="background-color:#f3f3f3;">
+              <td>Test if micro:bit turns on</td>
+              <td>micro:bit should turn on with a flashing orange light at the back</td>
+              <td>micro:bit turns on with flashing light</td>
+              <td>Pass</td>
+            </tr>
+            <tr style="background-color:#e9f5ff;">
+              <td>Test if code being uploaded to micro:bit is run</td>
+              <td>If code is run a circle should be displayed on micro:bit screen</td>
+              <td>Circle is displayed</td>
+              <td>Pass</td>
+            </tr>
+            <tr style="background-color:#f3f3f3;">
+              <td>Sensors connect to micro:bit and read data</td>
+              <td>A row of sensor values displayed in micro:bit website</td>
+              <td>Values displayed</td>
+              <td>Pass</td>
+            </tr>
+            <tr style="background-color:#e9f5ff;">
+              <td>Data sent over serial correctly</td>
+              <td>Code ran in VSCode prints each line of data as it received</td>
+              <td>Lines are printed out but are sometimes missing values or incorrectly formatted</td>
+              <td>Fail (fixed in next test case)</td>
+            </tr>
+            <tr style="background-color:#f3f3f3;">
+              <td>Data received over serial is discarded if values are incorrect</td>
+              <td>If a bad line is sent, code does not append it to .csv</td>
+              <td>Bad lines are not appended to .csv</td>
+              <td>Pass</td>
+            </tr>
+            <tr style="background-color:#e9f5ff;">
+              <td>Correct timestamp added to .csv line</td>
+              <td>Timestamp added with exact second</td>
+              <td>Timestamp added with exact second</td>
+              <td>Pass</td>
+            </tr>
+            <tr style="background-color:#f3f3f3;">
+              <td>Plotting software displays each sensor value graphed against time</td>
+              <td>Air humidity, soil moisture, temperature, light intensity and flame graphed against time</td>
+              <td>Graph is created with correct values</td>
+              <td>Pass</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Later Development Table -->
+        <h3>Later Development</h3>
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse: collapse; margin-bottom: 40px;">
+            <tr style="background-color:#07961a; color:white;">
+              <th>Test Case</th>
+              <th>Expected Result</th>
+              <th>Actual Result</th>
+              <th>Pass/Fail</th>
+            </tr>
+            <tr style="background-color:#f3f3f3;">
+              <td>Test if mean and standard deviation of each value is found for simulation</td>
+              <td>Mean and standard deviation printed to console</td>
+              <td>All values print the mean and standard deviation</td>
+              <td>Pass</td>
+            </tr>
+            <tr style="background-color:#e9f5ff;">
+              <td>Test if fire risk exceeds 50% that the pump and warning light turned on</td>
+              <td>Drying soil moisture sensor to increase fire risk should turn water pump on</td>
+              <td>Pump turns on when risk exceeds 50%</td>
+              <td>Pass</td>
+            </tr>
+            <tr style="background-color:#f3f3f3;">
+              <td>Test if Stats are displayed after simulation has run</td>
+              <td>Trees Burned, trees not burned, percentage of trees burned output to console</td>
+              <td>Stats outputted</td>
+              <td>Pass</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- CSV Input Validation Table -->
+        <h2>CSV Input Validation</h2>
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse: collapse; margin-bottom: 40px;">
+            <tr style="background-color:#07961a; color:white;">
+              <th>Input</th>
+              <th>Result</th>
+            </tr>
+            <tr style="background-color:#f3f3f3;">
+              <td>0,23,46,78,97</td>
+              <td>Accepted</td>
+            </tr>
+            <tr style="background-color:#e9f5ff;">
+              <td>0,3,67,2</td>
+              <td>Rejected as only 4 values are present</td>
+            </tr>
+            <tr style="background-color:#f3f3f3;">
+              <td>1,56,,45,79,,,86</td>
+              <td>Rejected as extra commas are present</td>
+            </tr>
+            <tr style="background-color:#e9f5ff;">
+              <td>156,4579,86</td>
+              <td>Rejected as there is only 3 values</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- New Text Sections from Your Input -->
+        <h2>Serial Data Issues</h2>
+        <p>Ran into a problem where my code was receiving bad data over serial from the micro:bit.</p>
+        <p>.csv lines were missing values, had extra commas, or too few commas. This in turn would break my modelling script as it returned an out-of-range error when fetching the values.</p>
+
+        <h3> How I investigated and rectified these problems</h3>
+        <p>I looked online for anyone with a similar issue: <a href="https://community.element14.com/learn/learning-center/stem-academy/microbit/f/forum/54030/some-garbled-serial-comms-from-micro-bit" target="_blank">Forum post</a></p>
+        <p>I found a forum post explaining that having the Makecode website open while my Python code was running was causing garbled values to be sent.</p>
+
+        <h3> Evidence showing how I fixed the problem </h3>
+        <p>I fixed this problem by closing the Makecode website when my code was running. I also implemented a failsafe if bad values were sent. The addition to my code is shown here, highlighted in red</p>
+        <div class="snippet"><code><pre>
+  while True:
+    <p style="color:red">
+          try:
+          </p>
+              line = ser.readline().decode(errors="ignore").strip()
+              timestamp = datetime.now()
+              # wildfire_risk_with_timestamp.py
+              #Read CSV and store values
+              parts = line.split(",")
+              light = (int(parts[0]))
+              temp = (int(parts[1]))
+              soil =(int(parts[2]))
+              air =(int(parts[3]))
+              ("Adding New line of Values")
+              
+              with open("artefact/log.csv", "a") as file:
+                  file.write(f"{timestamp},{line}\n")  
+              def wildfire_risk():
+                  risk =  (light/200 + 
+                          temp/100+
+                          (1-(soil/100)) + 
+                          (1 - (air/100))) / 4
+                  return risk
+              #Print results with timestamp
+              prob = wildfire_risk()
+              ser.write((str(prob) + "\n").encode()) #from my brain
+              print(f"{timestamp} → Wildfire Risk: {round(prob * 100)}%")
+
+              <p style="color:red">
+          except Exception as e:
+              print("Bad line of data sent")
+              time.sleep(10)
+              continue
+            </p>
+        </pre>
+        </code>
+        </div>
+        <h2> Embedded System Algorithm</h2>
+        <h3> Model Equation</h3>
+        <p>The algorithm I used to evaluate fire risk is <div class="snippet"><pre><code>                
+                risk =  (light/200) + 
+                        (temp/100)+
+                        (1-(soil/100)) + 
+                        (1 - (air/100)) / 4</code></pre></div>.</p>
+        <p>Each value in my equation is read from the sensors. Temperature is generally read between 0 and 100 in the forest, so I divide it by 100 to ensure it is no bigger than 1.</p>
+        <br>
+        <p> To show this algorithm working, I will sample a line of data from my log.csv file</p>
+        <br> <div class="snippet"><pre><code>           Timestamp, Light, Temperature, Soil Moisture, Air Humidity, Flame
+           2026-03-18 09:35:56.238918,93,25,77,16,0 </code></pre></div>
+           <br>
+           <p>Inputting these values gives</p>
+           <div class="snippet"><pre><code>  
+                risk =  (93/200) + 
+                        (25/100)+
+                        (1-(77/100)) + 
+                        (1 - (16/100)) / 4<br>
+                        Solving this equation gives 0.446 or a 44.6% risk of fire
+           </pre></div></code>
+        <p>Higher soil moisture and air humidity values mean less chance of fire, which is why it is <code>(1-soil_moisture)</code> and <code>(1-air_humidity)</code>. All values are divided by the max value that can be detected and then further divided by 4. This ensures the output risk of fire is a decimal between 0 and 1. This number is then multiplied by 100 to get the percentage value. You may notice that light is divided by 200, this is because the sensor had a tendency to read numbers almost exclusively in the 90's reacting very little to tests such as shining a torch on it, increasing only by 1 or 2 points</p>
+
+        <h3>Limitations</h3>
+        <p>A limitation I overlooked in development was the possibility of negative temperature values. This could lead to a negative fire risk being returned, which would not break the code but logically does not make sense.</p>
+
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-center w3-padding-32">
+  <p>Powered by W3.CSS</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

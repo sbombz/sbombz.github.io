@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Plan and Design</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="w3-top">
+  <div class="w3-bar w3-card w3-large">
+    <a href="index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="investigation.html" class="w3-bar-item w3-button">Investigation</a>
+    <a href="plan-and-design.html" class="w3-bar-item w3-button w3-white">Plan & Design</a>
+    <a href="create.html" class="w3-bar-item w3-button">Create</a>
+    <a href="testing.html" class="w3-bar-item w3-button w3-white">Testing</a>
+    <a href="evaluation.html" class="w3-bar-item w3-button">Evaluation</a>
+    <a href="wordcount.html" class="w3-bar-item w3-button">Word Count</a>
+    <a href="references.html" class="w3-bar-item w3-button">References</a>
+  </div>
+</div>
+
+<header class="w3-container w3-center" style="padding:128px 16px">
+  <h1 class="w3-jumbo">Plan and Design</h1>
+</header>
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="section-box">
+<section class="code_layout">
+
+  <div class="text-side">
+    <h1>Plan and Design</h1>
+    <p>
+      For this project, I had decided to write the code backend in Python, which would connect a micro:bit and greenhouse sensors via a serial port and calculate values regarding the potential risk of fire. Then the software would save each value to a .csv file so it can be recalled and used for What-If? scenarios and graphing.
+      <br><br>
+      I also plan to make the software happen live, where fire risk values will be displayed as data from the sensors and if they exceed 50%, preventative measures (such as increasing soil moisture) will be used.
+      <br><br>
+      I also realised end-users want to be able to interpret the data that is gathered, so I will write a graphing script so data can be understood.
+      <br><br>
+      Finally, I plan to create a simulation of a forest using all sensor values. This simulation will allow end-users to better understand environmental conditions and fire risk.
+    </p>
+
+<br><br>
+
+    <h2>Consideration of Different Options and Justification of Design Choices</h2>
+    <p>
+      I had investigated different embedded systems such as Pi Pico’s, ESP-32 and Raspberry Pi embedded boards. All of these come with their own advantages and disadvantages. However, I decided on using a micro:bit as it is easier to use, especially with the native makecode.micro:bit.org website and has a wide range of environmental sensors that are compatible, easy to find and to set up.
+      <br><br>
+      I chose the programming language Python due to its ease of use. It also has frequently maintained libraries that are necessary for statistical analysis and moving data between the micro:bit and computer.
+    </p>
+
+<br><br>
+
+    <h2>Libraries Used</h2>
+    <table style="margin-top: 20px;">
+      <tr>
+        <th>Library</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>Pyserial</td>
+        <td>Used to transfer data between the micro:bit and Python via serial communication.</td>
+      </tr>
+      <tr>
+        <td>NumPy</td>
+        <td>Used for statistical analysis and creating 2D arrays (meshgrid) for simulation modelling.</td>
+      </tr>
+      <tr>
+        <td>MatPlotLib</td>
+        <td>Used for graphing sensor data and creating the forest simulation visuals.</td>
+      </tr>
+    </table>
+
+<br><br>
+
+    <h2>Consideration of Stakeholders and End User Needs</h2>
+    <table style="margin-top: 20px;">
+      <tr>
+        <th>Stakeholder</th>
+        <th>Needs</th>
+        <th>How the Project Meets These Needs</th>
+      </tr>
+      <tr>
+        <td>Farmers</td>
+        <td>Protect crops and land from fires, prefer automated systems, require ease of use.</td>
+        <td>System activates water pump automatically when fire risk is high and is designed to run with minimal user input.</td>
+      </tr>
+      <tr>
+        <td>Firefighters</td>
+        <td>Early fire detection and fast response.</td>
+        <td>Sensors detect fire risk early and trigger alerts such as LED displays and system outputs.</td>
+      </tr>
+      <tr>
+        <td>Environmental Scientists</td>
+        <td>Accurate environmental data for research and analysis.</td>
+        <td>Data is collected and stored in .csv files, which can be used for simulations and graphing.</td>
+      </tr>
+    </table>
+
+<br><br>
+
+    <h2>Technologies Used</h2>
+    <p>
+      <b>Communication Between micro:bit and Backend:</b><br>
+      I decided to write a small section of code using the makecode.micro:bit.org website. This allows sensor data values to be read and sent across serial to the Python backend. The embedded code is mainly responsible for communication between sensors and the software logic. The micro:bit software is reliable and supported by a large library of extensions.
+      <br><br>
+
+      <b>Main Body of the Software:</b><br>
+      I chose to write the main code in VS Code. Although a mobile application may have been more user-friendly, the target users are environmental technicians and others with technical experience. The software will run automatically once required extensions (Pyserial, Python, NumPy) are installed and the micro:bit is connected.
+      <br><br>
+
+      <b>Data Storage:</b><br>
+      All data is stored locally in a .csv file. Since raw .csv data can be difficult to interpret, I will include graphing functionality to display values over time, making patterns easier to understand for the end user.
+    </p>
+
+  </div>
+
+  <div class="image-side">
+    <br>    <br>    <br>    <br>    <br>    <br>    <br>
+    <p>Below are some diagrams and flowcharts to help understand my project </p>
+    <img class="myImg" src="images/serial flowchart.png" alt="Flowchart of Sending Data Process">
+<br><br><br><br><br><br>
+    <img class="myImg" src="images/modelflowchart.png" alt="Flowchart of Fire Risk Calculation Process">
+<br><br><br><br><br><br>
+    <img class="myImg" src="images/graphicchart.png" alt="Main idea of my project">
+  </div>
+
+</section>
+  </div>
+</div>
+
+<footer class="w3-container w3-center w3-padding-32">
+  <p>Powered by W3.CSS</p>
+</footer>
+<div id="myModal" class="modal">
+  <span id="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+  <div id="caption"></div>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home and Meeting the Brief</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="w3-top">
+  <div class="w3-bar w3-card w3-large">
+    <a href="index.html" class="w3-bar-item w3-button">Home</a>
+    <a href="investigation.html" class="w3-bar-item w3-button">Investigation</a>
+    <a href="plan-and-design.html" class="w3-bar-item w3-button">Plan & Design</a>
+    <a href="create.html" class="w3-bar-item w3-button">Create</a>
+    <a href="testing.html" class="w3-bar-item w3-button w3-white">Testing</a>
+    <a href="evaluation.html" class="w3-bar-item w3-button">Evaluation</a>
+    <a href="wordcount.html" class="w3-bar-item w3-button">Word Count</a>
+    <a href="references.html" class="w3-bar-item w3-button">References</a>
+  </div>
+</div>
+
+
+<header class="w3-container w3-center" style="padding:128px 16px">
+  <h1 class="w3-jumbo">Leaving Certificate Project</h1>
+  <p class="w3-xlarge">Exam Number: 335960 </p>
+</header>
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content section-box">
+    <h1>Home</h1>
+
+    <h2>Introduction</h2>
+    <p>
+For my 2026 LC project, I decided to create forest monitoring software which detects when a tree is at risk of a fire. To do this I used a Microbit, a smart greenhouse kit and a python backend.
+This idea was very interesting and important to me, as this combines my passion for the environment and Computer Science.
+<br>
+<b>All images in this project can be enlarged simply by clicking on them if they are too small to read </b>
+    </p>
+<video width="640" height="360" controls>
+  <source src="videos/finalvideo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+    <h2>Meeting the Brief</h2>
+<table style="margin-top: 50px;">
+  <tr>
+    <th colspan="2">Basic Requirements</th>
+  </tr>
+
+  <tr class="table-heading">
+    <th>Requirement</th>
+    <th>Meets Requirement?</th>
+  </tr>
+
+  <tr>
+    <td>
+BR1
+</td>
+    <td>Yes - I have built an embedded system (microbit greenhouse) that once turned on reads data from different sensors automatically:
+Digital Input:
+Flame Sensor (returns 0 or 1)
+Analog Input: Soil Moisture Sensor
+Primary Output: Returns the probability of a fire occurring in Thonny based on sensor data, using this value a light is activated on the microbit if fire risk exceeds 50%
+</td>
+  </tr>
+
+  <tr>
+    <td>BR2
+</td>
+    <td>Collect:
+Data from the Flame, Light, Soil Humidity, CO2 and Air Humidity sensors is sent over Serial to Thonny where it is processed
+Store:
+The values from the sensors are stored in a .csv file with a timestamp on the PC
+</td>
+  </tr>
+
+  <tr>
+    <td>
+      BR3
+</td>
+    <td>Yes-As shown in the video, the embedded system responds to a decreased moisture level, we can see an increase in fire risk on the backend and subsequently the water pump and LED screen turn on. I was unable to show the fire sensor in action as I did not have permission to use matches or a lighter to activate it.
+  </tr>
+</table>
+<br><br><br><br><br><br><br><br><br><br>
+<table style="margin-top: 50px;">
+  <tr>
+    <th colspan="2">Advanced Requirements</th>
+  </tr>
+
+  <tr class="table-heading">
+    <th>Requirement</th>
+    <th>Meets Requirement?</th>
+  </tr>
+
+  <tr>
+    <td>AR1
+</td>
+    <td>Yes-The file “firesim.py” uses a graphical representation of a forest fire using matplotlib. The tree density and fire chance can be configured to better model a variety of climates and biomes and it takes the data from the sensor's mean and standard deviation to model the forest fire more accurately.
+After the code is run some statistics are displayed about the simulation that was run.
+</td>
+  </tr>
+
+  <tr>
+    <td>AR2
+</td>
+    <td>
+Yes- I have created two additional .csv files for each What-If scenario. These .csv files can be ran through my simulation or simply scanned using the normal firerisk calculation to see the increase. You can view the results for these in the video
+<br>My What-If Scenarios <br>
+What will happen if a forest fire happens after temperature has increased due to an external factor, e.g global warming?<br>
+What will happen if a fire occurs in forests with less rainfall or harsher light intensity
+</td>
+  </tr>
+
+  <tr>
+    <td>AR3
+</td>
+    <td>Yes - I have created a feedback mechanism so that if fire risk exceeds a certain percentage (currently set to 50%)
+An alert will be sent, turning on the red LED display on the microbit connected to the system. The water pump connected to my greenhouse will also turn on to increase soil moisture, mitigating fire risk.. If the fire sensor detects a flame the pump will also turn on to extinguish it as soon as possible. Once the risk drops back below 50% the pump and led screen return to normal
+</td>
+  </tr>
+</table>
+
+
+<footer class="w3-container w3-center w3-padding-32">
+  <p>Powered by W3.CSS</p>
+</footer>
+
+</body>
+</html>

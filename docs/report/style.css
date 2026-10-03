@@ -1,0 +1,155 @@
+/* ===== GLOBAL FONTS ===== */
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lucida Console", monospace;
+}
+
+.w3-bar, button {
+  font-family: Arial, Helvetica, sans-serif, sans-serif;
+}
+  /* ===== COLOUR THEME ===== */
+  :root {
+    --primary: #172f24;
+    --primary-light: #ffffff;
+    --primary-dark: ##09673d;
+  }
+  
+  /* ===== PAGE BACKGROUND ===== */
+  body {
+    background: var(--primary-light);
+  }
+  
+  /* ===== NAVBAR ===== */
+  .w3-top .w3-bar {
+    background-color: var(--primary);
+  }
+  
+  /* ===== HEADER ===== */
+  header {
+  background-color: var(--primary);
+  background-image: url('images/forest.jpg'); 
+  background-size: cover;       
+  background-repeat: no-repeat; 
+  background-position: center;  
+  }
+  
+  header h1 {
+    color: white;
+  }
+  
+  /* ===== BUTTONS ===== */
+  button,
+  .w3-button {
+    background-color: var(--primary-dark) !important;
+    color: white !important;
+  }
+  
+  /* ===== CONTENT BOX ===== */
+  .section-box {
+    background: white;
+    border-radius: 6px;
+    padding: 32px;
+  }
+  
+  /* Text colours inside content */
+  .section-box h1,
+  .section-box h2,
+  .section-box h3,
+  .section-box p,
+  .section-box li {
+    color: black;
+  }
+  
+  /* ===== FOOTER ===== */
+  footer p {
+    color: black;
+  }
+  table {
+  border-collapse: collapse;
+  width: 100%;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 10px;
+  }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+}
+
+/* Enlarged image */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 70%;
+  margin-top: 100px;
+}
+
+/* Caption */
+#caption {
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Close button */
+#close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.code_layout{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.text-side{
+  flex: 1;
+}
+
+.image-side{
+  flex: 1;
+  text-align: right;
+}
+
+.image-side img{
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+/*This Css Code taken from a sample project supplied by teacher*/
+.snippet {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 25px;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.snippet code {
+  font-family: Consolas, monospace;
+  font-size: 14px;
+}
+/*Fix code as text was pushed to far right of screen*/
+.image-side p {
+  text-align: center;   
+  margin: 0;          
+  padding: 10px;      
+  font-size: 1.2em;   
+}

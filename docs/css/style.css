@@ -76,6 +76,46 @@ fos-icon {
   border-radius: 0;
   font-size: 2em;
 }
+.w95-run {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 8px 16px;
+    background: #c0c0c0;
+    color: #000;
+    font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    /* Win95 raised bevel */
+    border: 2px solid;
+    border-color: #fff #404040 #404040 #fff;
+    box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
+}
+.w95-run:hover { background: #d4d4d4; }
+.w95-run:active,
+.w95-run.loading {
+    border-color: #404040 #fff #fff #404040;
+    box-shadow: inset 1px 1px #808080;
+}
+.w95-run-top { display: flex; align-items: center; gap: 8px; }
+.w95-run-icon { font-size: 20px; }
+
+.w95-run-bar {
+    display: none;
+    margin-top: 8px;
+    height: 14px;
+    background: #fff;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+}
+.w95-run.loading .w95-run-bar { display: block; }
+#runFill {
+    display: block;
+    height: 100%;
+    width: 0;
+    /* chunky blue blocks like the old progress bars */
+    background: repeating-linear-gradient(90deg, #000080 0 10px, transparent 10px 12px);
+}
 #mainDesktop > fos-icon > img {
   width: 100%;
   -webkit-filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.5));
